@@ -1,0 +1,6 @@
+Django
+django-cors-headers
+djangorestframework==3.8.2
+djangorestframework-simplejwt==4.3.0
+requests==2.19.1
+
