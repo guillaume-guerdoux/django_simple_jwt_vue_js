@@ -1,1 +1,20 @@
 https://github.com/davesque/django-rest-framework-simplejwt
+https://blog.sqreen.com/authentication-best-practices-vue/
+https://medium.com/@samy_raps/simple-movies-web-app-with-vue-vuetify-and-django-part-2-login-2414b984500b
+https://hackernoon.com/jwt-authentication-in-vue-js-and-django-rest-framework-part-1-c40c5c0d4f6e
+
+Pour créer un token
+
+curl   -X POST   -H "Content-Type: application/json"   -d '{"username": "guillaume", "password": "Guillaume"}'   http://localhost:8000/auth/token
+
+Pour utiliser un token dans une view qui est protégée
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6MSwiZXhwIjoxNTYzNzI2NDM2LCJqdGkiOiIxOTA2Y2E3MDlhNjU0ZDNmOTI0ZjZhNjZlMmM5OGU1OSJ9.xJdODZfBhGkyvIQTy7jV75Vp2KeN3eVbIfDNbLWH3Nqw" http://localhost:8000/api/movies/
+
+Pour refresh l'access token
+
+curl   -X POST   -H "Content-Type: application/json"   -d '{"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3BrIjoxLCJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImNvbGRfc3R1ZmYiOiLimIMiLCJleHAiOjIzNDU2NywianRpIjoiZGUxMmY0ZTY3MDY4NDI3ODg5ZjE1YWMyNzcwZGEwNTEifQ.aEoAYkSJjoWH1boshQAaTkf8G3yn0kapko6HFRt7Rh4"}'   http://localhost:8000/api/token/refresh/
+
+Pour verify l'access token
+
+curl -X POST -H "Content-Type: application/json" -d '{"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6MSwiZXhwIjoxNTYzNzI2NDM2LCJqdGkiOiIxOTA2Y2E3MDlhNjU0ZDNmOTI0ZjZhNjZlMmM5OGU1OSJd9.JdODZfBhGkyvIQTy7jV75Vp2KeN3eVbIfDNbLWH3Nqw"}' http://localhost:8000/auth/token/verify
