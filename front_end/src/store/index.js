@@ -18,11 +18,14 @@ export default new Vuex.Store({
 
   getters: {
     isAuthenticated: state => !!state.jwt,
+    TOKEN: state => {
+      return state.jwt
+    }
   },
 
   mutations: {
     updateToken(state, newToken){
-      localStorage.setItem('user-jwt', newToken);
+      localStorage.setItem('user-jwt', JSON.stringify(newToken));
       state.jwt = newToken;
     },
     removeToken(state){
